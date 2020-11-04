@@ -15,7 +15,6 @@ php artisan vendor:publish --provider "IvanoMatteo\LaravelSlowQuery\LaravelSlowQ
 
 ```
 
-
 ## Usage
 
 Write a few lines about the usage of this package.
