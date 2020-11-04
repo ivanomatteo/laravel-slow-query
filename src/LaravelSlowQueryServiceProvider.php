@@ -21,7 +21,7 @@ class LaravelSlowQueryServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/LaravelSlowQuery.php', 'laravel-slow-query');
 
-        //$this->publishConfig();
+        $this->publishConfig();
 
         // $this->loadViewsFrom(__DIR__.'/resources/views', 'laravel-slow-query');
         // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
