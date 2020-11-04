@@ -11,7 +11,7 @@
 
 composer require ivanomatteo/laravel-slow-query
 
-php artisan vendor:publish --provider "IvanoMatteo\LaravelSlowQuery\LaravelSlowQueryServiceProvider" --tag 
+php artisan vendor:publish --provider "IvanoMatteo\LaravelSlowQuery\LaravelSlowQueryServiceProvider" --tag config
 
 ```
 
