@@ -1,6 +1,6 @@
 {
     "name": "ivanomatteo/laravel-slow-query",
-    "description": "Your Package Description here",
+    "description": "Detect slow queries",
     "type": "library",
     "license": "MIT",
     "keywords": [],
