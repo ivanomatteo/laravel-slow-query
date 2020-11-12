@@ -15,14 +15,17 @@ class SlowQueryDetected
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $report;
+    public $queryExecuted;
+
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($report)
+    public function __construct($info)
     {
-        $this->report = $report;
+        $this->report = $info['report'];
+        $this->queryExecuted = $info['queryExecuted'];
     }
-    
+
 }

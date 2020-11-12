@@ -27,22 +27,23 @@ class LaravelSlowQueryServiceProvider extends ServiceProvider
         // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         // $this->registerRoutes();
 
-        DB::listen(function (?QueryExecuted $query) {
+        DB::listen(function (?QueryExecuted $queryExecuted) {
 
-            if ($query->time > config('laravel-slow-query.max-time')) {
-                $escapedBindings = collect($query->bindings)->map(function ($item, $key) {
+            if ($queryExecuted->time > config('laravel-slow-query.max-time')) {
+                $escapedBindings = collect($queryExecuted->bindings)->map(function ($item, $key) {
                     return DB::connection()->getPdo()->quote($item);
                 })->toArray();
-                $sqlPreview = Str::replaceArray('?', $escapedBindings, $query->sql);
+                $sqlPreview = Str::replaceArray('?', $escapedBindings, $queryExecuted->sql);
 
                 $report = [
-                    'sql' => $query->sql,
-                    'bindings' => $query->bindings,
+                    'connectionName' => $queryExecuted->connectionName,
+                    'time' => $queryExecuted->time,
                     'sqlPreview' => $sqlPreview,
-                    'time' => $query->time,
+                    'sql' => $queryExecuted->sql,
+                    'bindings' => $queryExecuted->bindings,
                 ];
 
-                SlowQueryDetected::dispatch($report);
+                SlowQueryDetected::dispatch(compact('report','queryExecuted'));
             }
         });
     }
