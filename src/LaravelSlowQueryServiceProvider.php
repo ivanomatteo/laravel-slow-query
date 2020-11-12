@@ -19,7 +19,7 @@ class LaravelSlowQueryServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/LaravelSlowQuery.php', 'laravel-slow-query');
+        $this->mergeConfigFrom(__DIR__ . '/../config/laravelSlowQuery.php', 'laravel-slow-query');
 
         $this->publishConfig();
 
@@ -95,7 +95,7 @@ class LaravelSlowQueryServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../config/LaravelSlowQuery.php' => config_path('LaravelSlowQuery.php'),
+                __DIR__ . '/../config/laravelSlowQuery.php' => config_path('laravel-slow-query.php'),
             ], 'config');
         }
     }
